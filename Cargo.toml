@@ -1,0 +1,18 @@
+[package]
+name = "merkleNote"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+rs_merkle = {git = "https://github.com/jonathanxuu/rs-merkle.git", default-features = false }
+bytemuck = "1.12.0"
+hex = "0.4"
+
+[features]
+default = ['std']
+std = ["rs_merkle/std"]
