@@ -202,7 +202,7 @@ dependencies = [
 [[package]]
 name = "rs_merkle"
 version = "1.4.2"
-source = "git+https://github.com/jonathanxuu/rs-merkle.git#38e581d6316f307676b09b12ae8741393b5dc623"
+source = "git+https://github.com/jonathanxuu/rs-merkle.git?branch=test#98652e23df0b693cb3cd6795e6255610503fe3aa"
 dependencies = [
  "bytemuck",
  "rescue-prime-optimized",
