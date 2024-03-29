@@ -12,8 +12,9 @@ pub fn convert_proof_to_u64(proof: MerkleProof<Rescue>) -> Vec<Vec<u64>> {
     return hash_u64;
 }
 
-pub fn convert_u8_to_u64(origin: &[u8; 32]) -> Vec<u64> {
-    let u64_slice: &[u64] = cast_slice(origin);
+pub fn convert_u8_to_u64(origin: [u8; 32]) -> Vec<u64> {
+    let u64_slice: &[u64] = cast_slice(&origin);
+
     assert!(u64_slice.len() == 4, "Proof result length invalid");
     return u64_slice.to_vec();
 }

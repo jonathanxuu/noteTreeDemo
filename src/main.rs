@@ -10,9 +10,6 @@ fn main() {
         "3a657e95b8c80edda9252f9b257f2d194151985e174cd81f82dfd637016878c7",
         "bcccd471ccd18845f8c1812a65ea7bf5a3568f43c38969a379533c69601b31e2",
         "105606c8779bf17f4ba8439bfa442539ff196b7a4b6bd0a51508b0796b3fa919",
-        "2c5606c8779bf17f4ba8439bfa442539ff196b7a4b6bd0a51508b0796b3fa93e",
-        "885606c8779bf17f4ba8439bfa442539ff196b7a4b6bd0a51508b0796b3fa97b",
-        "8c5606c8779bf17f4ba8439bfa442539ff196b7a4b6bd0a51508b0796b3fa92b",
     ];
 
     let leaves: Vec<[u8; 32]> = leaf_values
@@ -24,13 +21,18 @@ fn main() {
 
     let merkle_tree = MerkleTree::<Rescue>::from_leaves(&leaves);
     let roothash = merkle_tree.root();
+    let roothash_unwrap = roothash.unwrap();
     println!("Root hash: {:?}", hex::encode(roothash.unwrap()));
-    let indices_to_prove = vec![5];
-    let leaves_to_prove = &[*leaves.get(5).ok_or("can't get leaves to prove").unwrap()];
+    println!("Root hash: {:?}", convert_u8_to_u64(roothash_unwrap));
 
+    let indices_to_prove = vec![0];
+    let leaves_to_prove = &[*leaves.get(0).ok_or("can't get leaves to prove").unwrap()];
+
+    println!("&leaves_to_prove[0] is {:?}", leaves_to_prove[0]);
+    
     println!(
         "leaves_to_prove is : {:?}",
-        convert_u8_to_u64(&leaves_to_prove[0])
+        convert_u8_to_u64(leaves_to_prove[0])
     );
 
     let (index_list, merkle_proof) = merkle_tree.proof(&indices_to_prove);
