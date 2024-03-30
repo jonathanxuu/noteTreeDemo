@@ -1,4 +1,4 @@
-use rs_merkle::{algorithms::Rescue, MerkleProof, MerkleTree};
+use rs_merkle::{algorithms::Rescue, MerkleTree};
 
 use crate::helper::{
     convert::{compute_note_tree_leave, convert_u64_to_hash, convert_u8_to_u64},
@@ -7,14 +7,11 @@ use crate::helper::{
 
 pub mod helper;
 
-
-
-
 fn main() {
     // ===================== Bob's work(done in Frontend)===========================================================
     // Bob Generate randomness (this should be done in the Frontend, not in the canister/rust)
     // The random should be u64, to make it easy to hash
-    let bob_random: u64 = 10000; 
+    let bob_random: u64 = 10000;
 
     // Bob compute the hash(random)(this can be done in the Frontend & in the canister/rust)
     let bob_random_hash = convert_u64_to_hash(bob_random);
@@ -27,14 +24,14 @@ fn main() {
     println!("nullfier: {:?}", convert_u8_to_u64(nullfier));
 
     // =================== Bob sends `bob_random_hash` & `pay_value` to Alice(Frontend) ======================
-    // send(bob_random_hash, pay_value) 
+    // send(bob_random_hash, pay_value)
     // =================== Alice's work ===========================================================
 
     // Deposit pay_value With bob_random_hash
     // deposit(bob_random_hash, value)
-    // New NoteTree Leave append to the NoteTree 
+    // New NoteTree Leave append to the NoteTree
     let note_leave = compute_note_tree_leave(bob_random_hash, pay_value);
-    let note_leave1= make_test_note_leave(10001, 20001);
+    let note_leave1 = make_test_note_leave(10001, 20001);
     let note_leave2 = make_test_note_leave(10002, 20002);
 
     let leaves: Vec<[u8; 32]> = [note_leave, note_leave1, note_leave2].to_vec();
@@ -47,17 +44,14 @@ fn main() {
     let indices_to_prove = vec![0];
     let leaves_to_prove = &[*leaves.get(0).ok_or("can't get leaves to prove").unwrap()];
     // println!("&leaves_to_prove[0] is {:?}", leaves_to_prove[0]);
-    println!(
-        "leaves_to_prove is : {:?}",
-        convert_u8_to_u64(note_leave)
-    );
+    println!("leaves_to_prove is : {:?}", convert_u8_to_u64(note_leave));
 
     // Generate the MerkleProof & zkFlag
     // let (index_list, merkle_proof) = merkle_tree.proof(&indices_to_prove);
     let (index_list, merkle_proof) = merkle_tree.proof(&indices_to_prove);
 
     // Generate the miden_inputs
-    let miden_inputs = construct_miden_input( merkle_proof, index_list);
+    let miden_inputs = construct_miden_input(merkle_proof, index_list);
     println!("miden_inputs is {:?}", miden_inputs);
 
     // Parse proof back on the client
@@ -75,9 +69,6 @@ fn main() {
     //     leaves.len()
     // ));
 
-
-
-    
     // A test for purely mekleTree without random_hash & pay_value
     // let leaf_values = [
     //     "3a657e95b8c80edda9252f9b257f2d194151985e174cd81f82dfd637016878c7",
@@ -132,7 +123,7 @@ fn main() {
 }
 
 // Helper: help construct note_leave with random & pay_value
-fn make_test_note_leave(random: u64, pay_value: u64) -> [u8; 32]{
+fn make_test_note_leave(random: u64, pay_value: u64) -> [u8; 32] {
     let random_hash = convert_u64_to_hash(random);
     compute_note_tree_leave(random_hash, pay_value)
 }
