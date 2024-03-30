@@ -16,6 +16,8 @@ fn main() {
     // Bob compute the hash(random)(this can be done in the Frontend & in the canister/rust)
     let bob_random_hash = convert_u64_to_hash(bob_random);
 
+    // In canister this random_hash should be unique!! Avoid ramdom_hash collision
+
     // Bob decide the value to request
     let pay_value: u64 = 20000;
 
@@ -41,7 +43,10 @@ fn main() {
     println!("Root hash: {:?}", convert_u8_to_u64(roothash));
 
     // Pick the leave to prove
+    // In canister the indices should be returned by canister(or just query the merklePath via the leaveHash)
+    // In the second way, there should be a mapping, map leaveHash to indice
     let indices_to_prove = vec![0];
+
     let leaves_to_prove = &[*leaves.get(0).ok_or("can't get leaves to prove").unwrap()];
     // println!("&leaves_to_prove[0] is {:?}", leaves_to_prove[0]);
     println!("leaves_to_prove is : {:?}", convert_u8_to_u64(note_leave));
