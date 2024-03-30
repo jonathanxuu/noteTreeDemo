@@ -187,7 +187,7 @@ dependencies = [
 [[package]]
 name = "rescue-prime-optimized"
 version = "0.4.0"
-source = "git+https://github.com/jonathanxuu/RescuePrimeOptimiezd.git#ee0264069358a477fd73a5d848b8415997f1cd94"
+source = "git+https://github.com/jonathanxuu/RescuePrimeOptimiezd.git?branch=lib#9006341cf92272a200fa7f9ee1373a60a5f10cce"
 dependencies = [
  "blake3",
  "console_error_panic_hook",
@@ -202,7 +202,7 @@ dependencies = [
 [[package]]
 name = "rs_merkle"
 version = "1.4.2"
-source = "git+https://github.com/jonathanxuu/rs-merkle.git?branch=test#98652e23df0b693cb3cd6795e6255610503fe3aa"
+source = "git+https://github.com/jonathanxuu/rs-merkle.git?branch=test#f8e625c8fa3406bebae8dfdcdae86461686fdfb0"
 dependencies = [
  "bytemuck",
  "rescue-prime-optimized",
@@ -263,9 +263,9 @@ source = "git+https://github.com/paritytech/substrate.git#033d4e86cc7eff0066cd37
 
 [[package]]
 name = "syn"
-version = "2.0.55"
+version = "2.0.57"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "002a1b3dbf967edfafc32655d0f377ab0bb7b994aa1d32c8cc7e9b8bf3ebb8f0"
+checksum = "11a6ae1e52eb25aab8f3fb9fca13be982a373b8f1157ca14b897a825ba4a2d35"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -394,7 +394,7 @@ dependencies = [
 [[package]]
 name = "winter-crypto"
 version = "0.6.2"
-source = "git+https://github.com/jonathanxuu/RescuePrimeOptimiezd.git#ee0264069358a477fd73a5d848b8415997f1cd94"
+source = "git+https://github.com/jonathanxuu/RescuePrimeOptimiezd.git?branch=lib#9006341cf92272a200fa7f9ee1373a60a5f10cce"
 dependencies = [
  "blake3",
  "sha3",
@@ -405,7 +405,7 @@ dependencies = [
 [[package]]
 name = "winter-math"
 version = "0.6.2"
-source = "git+https://github.com/jonathanxuu/RescuePrimeOptimiezd.git#ee0264069358a477fd73a5d848b8415997f1cd94"
+source = "git+https://github.com/jonathanxuu/RescuePrimeOptimiezd.git?branch=lib#9006341cf92272a200fa7f9ee1373a60a5f10cce"
 dependencies = [
  "serde",
  "winter-utils",
@@ -414,4 +414,4 @@ dependencies = [
 [[package]]
 name = "winter-utils"
 version = "0.6.2"
-source = "git+https://github.com/jonathanxuu/RescuePrimeOptimiezd.git#ee0264069358a477fd73a5d848b8415997f1cd94"
+source = "git+https://github.com/jonathanxuu/RescuePrimeOptimiezd.git?branch=lib#9006341cf92272a200fa7f9ee1373a60a5f10cce"
